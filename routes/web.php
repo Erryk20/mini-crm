@@ -16,3 +16,38 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('users', 'UserController')->middleware('auth');
+
+Route::resource('users', 'UserController')->middleware('auth');
+
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->middleware('verified');
+
+Route::resource('users', 'UserController')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('image-upload', 'ImageUploadController@imageUpload')->name('image.upload');
+//
+//Route::post('image-upload', 'ImageUploadController@imageUploadPost')->name('image.upload.post');
+
+
+Route::get('image-view','ImageController@index')->middleware('auth');
+Route::post('image-view','ImageController@store')->middleware('auth');
+
+
+Route::resource('companies', 'CompaniesController')->middleware('auth');
+
+Route::resource('employees', 'EmployeesController')->middleware('auth');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
